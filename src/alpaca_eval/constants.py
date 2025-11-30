@@ -221,7 +221,7 @@ if CURRENT_USER in ["yanndubs"]:
 
 def ALPACAFARM_ALL_OUTPUTS():
     if IS_ALPACA_EVAL_2:
-        return [f"results/{m}/model_outputs.json" for m in MINIMAL_MODELS_FOR_NEW_LEADERBOARD]
+        return [BASE_DIR / f"results/{m}/model_outputs.json" for m in MINIMAL_MODELS_FOR_NEW_LEADERBOARD]
     else:
         return datasets.load_dataset(
             "tatsu-lab/alpaca_eval",
