@@ -510,8 +510,8 @@ def get_metrics_evaluator(analyzer, df_crossannotations, evaluator_name=None):
         analyzer.agreement_of_annotations(annotations_1=df_crossannotations, n_majority_vote_1=1)["score"] * 100
     )
 
-    all_metrics["Price [$/1000 examples]"] = df_crossannotations["price_per_example"].mean() * 1000
-    all_metrics["Time [seconds/1000 examples]"] = df_crossannotations["time_per_example"].mean() * 1000
+    all_metrics["Price [$/1000 examples]"] = df_crossannotations[f"{analyzer.annotation_key}_price_per_example"].mean() * 1000
+    all_metrics["Time [seconds/1000 examples]"] = df_crossannotations[f"{analyzer.annotation_key}_time_per_example"].mean() * 1000
 
     correlations = analyzer.estimate_correlations(df_crossannotations)
     all_metrics["Spearman corr."] = correlations["spearman"]
