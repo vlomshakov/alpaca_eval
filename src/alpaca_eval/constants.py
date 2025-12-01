@@ -3,6 +3,7 @@ import getpass
 import os
 from functools import partial
 from pathlib import Path
+import pandas as pd
 
 import datasets
 from huggingface_hub import hf_hub_download
@@ -77,16 +78,16 @@ VERIFIED_EVALUATORS = tuple(
 ORDERED_LEADERBOARD_MODES = ["minimal", "verified", "community", "dev"]
 
 
-def get_alpaca_eval_data(dataset="alpaca_eval_gpt4_baseline"):
-    dataset = datasets.load_dataset(
-        "tatsu-lab/alpaca_eval",
-        dataset,
+def get_alpaca_eval_data(filename="alpaca_eval_gpt4_baseline.json"):
+    out = hf_hub_download(
+        repo_id="tatsu-lab/alpaca_eval",
+        filename=filename,
+        repo_type="dataset",
+        force_download=DATASETS_FORCE_DOWNLOAD,
         cache_dir=DEFAULT_CACHE_DIR,
         token=DATASETS_TOKEN,
-        download_mode="force_redownload" if DATASETS_FORCE_DOWNLOAD else None,
-        trust_remote_code=True,
-    )["eval"]
-    return dataset
+    )
+    return pd.read_json(out)
 
 
 ALPACAEVAL_REFERENCE_OUTPUTS_2 = get_alpaca_eval_data
