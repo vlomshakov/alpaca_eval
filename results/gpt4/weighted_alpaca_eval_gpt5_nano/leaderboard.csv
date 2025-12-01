@@ -1,0 +1,3 @@
+,win_rate,standard_error,mode,avg_length,n_wins,n_wins_base,n_draws,n_total,discrete_win_rate,length_controlled_winrate,lc_standard_error
+gpt4_1106_preview,50.0,0.0,verified,2049,0,0,805,805,50.0,50.0,0.0
+gpt4,30.09950248756219,1.6114910688337494,verified,1365,239,559,6,804,30.09950248756219,48.350223135554934,0.4078935987702663
